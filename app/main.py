@@ -71,4 +71,4 @@ while True:
         
     
     # Ожидание перед следующей загрузкой
-    time.sleep(60) 
+    time.sleep(3600) 
