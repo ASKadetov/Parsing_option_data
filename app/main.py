@@ -33,8 +33,13 @@ def log_message(message):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     log_entry = f"[{timestamp}] {message}\n"
     
-    with open('tmp/logs.txt', 'a', encoding='utf-8') as log_file:
-        log_file.write(log_entry)
+    try:
+        os.makedirs('tmp', exist_ok=True)
+        with open('tmp/logs.txt', 'a', encoding='utf-8') as log_file:
+            log_file.write(log_entry)
+    except Exception:
+        # Fallback to stdout only if writing to file fails
+        pass
     print(log_entry)
 
 
